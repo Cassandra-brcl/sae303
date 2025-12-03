@@ -1,3 +1,4 @@
+
 <html>
     <head>
 <title> SAE 303</title>
@@ -5,26 +6,51 @@
 <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
+
+<style>
+    body { margin: 0; overflow: hidden; }
+    /* overlay guide */
+    #guide {
+      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.6); z-index: 9999;
+    }
+    #guide img { width: 70%; max-width: 900px; border: 2px solid white; border-radius: 10px; }
+  </style>
+
     </head>
 
 <body>
-<a-scene mindar-image="imageTargetSrc: sources/chowa.mind;"
-    vr-mode-ui="enabled: false"
-    device-orientation-permission-ui="enabled: true"
-    renderer="logarithmicDepthBuffer: true; colorManagement: true; highPerformance: true; physicallyCorrectLights: true; antialias: false; powerPreference: high-performance;"
-    stats="false"
->
+
+    <div id="guide">
+        <img src="sources/JPOv3.png" alt="Guide">
+      </div>
+
+      <a-scene
+      mindar-image="imageTargetSrc: sources/chowa.mind; uiLoading: no; uiScanning: no; uiError: no;"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: true"
+      renderer="logarithmicDepthBuffer: true; colorManagement: true; highPerformance: true; physicallyCorrectLights: true;"
+      embedded
+    >
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <a-entity mindar-image-target="targetIndex: 0">
-        <a-image id="JPO" src="sources/JPOv3.png" 
-            visible="true"
-            position="0 0 0"
-        />
-        
+      <!-- cible index 0 -->
+      <a-entity id="ma-cible" mindar-image-target="targetIndex: 0">
+        <a-image id="JPO" src="sources/JPOv3.png" position="0 0 0" visible="true"></a-image>
       </a-entity>
+    </a-scene>
+    <script>
+        (function () {
+          const guide = document.getElementById('guide');
+          const cible = document.getElementById('ma-cible');
+          if (!guide || !cible) { console.warn('Guide ou cible introuvable'); return; }
 
-</a-scene>
-</body>
+          // cache le guide quand target trouvée
+          cible.addEventListener('targetFound',  () => { guide.style.display = 'none'; });
 
-</html>
+          // réaffiche le guide quand target perdue
+          cible.addEventListener('targetLost',   () => { guide.style.display = 'flex'; });
+        })();
+      </script>
+    </body>
+    </html>
