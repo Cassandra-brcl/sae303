@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <html>
     <head>
 <title> SAE 303</title>
@@ -7,23 +6,25 @@
 <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
     </head>
-    <body>
 
-    </body>
+<body>
+<a-scene mindar-image="imageTargetSrc: sources/chowa.mind;"
+    vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: true"
+    renderer="logarithmicDepthBuffer: true; colorManagement: true; highPerformance: true; physicallyCorrectLights: true; antialias: false; powerPreference: high-performance;"
+    stats="false"
+>
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-image id="JPO" src="sources/JPOv3.png" 
+            visible="true"
+            position="0 0 0"
+        />
+        
+      </a-entity>
+
+</a-scene>
+</body>
 
 </html>
-=======
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Mon premier jeu en Phaser 3</title>
-    <meta charset="UTF-8" />
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-  </head>
-
-  <body>
-    <script src="src/index.js"></script>
-  </body>
-</html>
->>>>>>> 58ddf48741ec9d5e3b602e3f39f2aafded2599b3
