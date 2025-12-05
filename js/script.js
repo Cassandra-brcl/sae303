@@ -241,13 +241,18 @@ function handleImageClick(imageId) {
             texte =`Le parcours en alternance permet à l'étudiant de partager son temps entre l'IUT et une entreprise, en suivant un rythme qui alterne périodes de cours et périodes de travail.<br>
             Ce mode de formation offre une immersion professionnelle continue, permet d'acquérir de l'expérience profesinnelle tout au long de l'année et donne souvent accès à une insertion plus rapide dans le monde du travail.<br> <br>
 
-            <img src="sources/barre alternance.png" <br> <br> <br>
+            <img src="sources/barre alternance.png"
+            data-case="stagiaire"
+            style="height:50px; margin:05px;"></img> <br> <br> <br>
             À Béziers, 2 étudiants sur 10 choisissent l'alternance, privilégiant ainsi une formation directement ancrée dans la réalité professionnelle et une expérience significative dès leur deuxième année d'étude.`;
             break;
         case 'stagiaire':
             texte = `Le parcours initial avec stage est une modalité de formation dans laquelle l'étudiant suit ses cours à temps plein à l'IUT tout au long de l'année, puis réalise un stage en entreprise pour mettre en pratique les compétences acquises.<br>
             Ce stage, généralement effectué à la fin de l'année, permet de découvrir le monde professionnel et de développer une première expérience concrète.<br><br>
-            <img src="sources/barre stage.png" <br> <br> <br>
+            
+            <img src="sources/barre stage.png"
+            data-case="alternant"
+            style="height:50px; margin:05px;"></img> <br> <br> <br>
             À Béziers, 8 étudiants sur 10 choisissent le parcours initial, ce qui en fait la voie la plus répandue et la plus adaptée à ceux qui souhaitent suivre une formation complète à l'IUT avant de réaliser leurs stages.`;
             break;
         case 'rob':
