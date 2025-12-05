@@ -1,4 +1,3 @@
-
 // Attendre que la scène soit chargée
 document.addEventListener('DOMContentLoaded', function() {
     
