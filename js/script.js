@@ -125,6 +125,19 @@ function showInfoBox(text) {
                 }
             });
         });
+
+    // Ajouter les événements de clic aux images avec liens internes
+        const internalLinks = infoText.querySelectorAll('img[data-case]');
+        internalLinks.forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const caseId = this.getAttribute('data-case');
+                if (caseId) {
+                    handleImageClick(caseId);
+                }
+            });
+        });
     }, 100);
 }
 
@@ -146,7 +159,7 @@ function handleImageClick(imageId) {
     
     switch(imageId) {
         case 'hibou':
-            texte = `Salut ! Moi c'est Athéna, la mascotte de l'iut, je suis là tout au long de l'année pour t'accompagner dans ta vie étudiante.<br>
+            texte = `Salut ! Moi c'est Athéna, la mascotte de l'IUT, je suis là tout au long de l'année pour t'accompagner dans ta vie étudiante.<br>
             Tu me retrouveras généralement lors des évènements étudiants organisés par le BDE. <br> <br>
             Je te laisse me rejoindre sur insta et tiktok pour suivre toutes mes aventures !<br> <br>
 
@@ -159,7 +172,7 @@ function handleImageClick(imageId) {
             style="width:40px; height:40px; margin:05px;"></img>`;
             break;
         case 'planet':
-            texte = `Situé dans le Sud de la France, au cœur de l'Occitanie, l'iut vous permet de bénéficier d'un cadre de vie agréable.<br>
+            texte = `Situé dans le Sud de la France, au cœur de l'Occitanie, l'IUT vous permet de bénéficier d'un cadre de vie agréable.<br>
             Venez profiter d'une vie étudiante dynamique entre plages, patrimoines et paysages.<br>
             La ville de Béziers offre un cadre de vie convivial et abordable, faisant de cet IUT l'endroit parfait pour allier études de qualité et quotidien ensoleillé.<br><br>
             
@@ -171,10 +184,31 @@ function handleImageClick(imageId) {
             texte = 'Nos étudiants sont au cœur de notre projet pédagogique.';
             break;
         case '3but':
-            texte = 'Le Bachelor Universitaire de Technologie est un diplôme sur 3 ans. Il s\'agit d\'une formation professionnalisante entre théorie et pratique en intégrant : travaux pratiques et dirigés,  stages obligatoires et la possibilité d\'alternance. L\'obtention du BUT ouvre deux voies principales : une insertion professionnelle immédiate ou la poursuite d\'études vers un Master ou une école spécialisée.';
+            texte = `Le Bachelor Universitaire de Technologie est un diplôme sur 3 ans.<br>
+            Il s'agit d'une formation professionnalisante entre théorie et pratique en intégrant : travaux pratiques et dirigés,  stages obligatoires et la possibilité d'alternance.<br>
+            L'obtention du BUT ouvre deux voies principales : une insertion professionnelle immédiate ou la poursuite d'études vers un Master ou une école spécialisée.<br><br>
+            Découvrez les 3 BUT que nous proposons à l'IUT: <br>
+            
+            <img src="sources/mmi.png" 
+            data-case="mmi"
+            style="width:40px; height:40px; margin:5px;"></img>
+            
+            <img src="sources/RT.png" 
+            data-case="rt"
+            style="width:40px; height:40px; margin:5px;"></img>
+            
+            <img src="sources/TC.png" 
+            data-case="tc"
+            style="width:40px; height:40px; margin:5px;"></img>`;
             break;
         case 'licence':
-            texte = 'La licence professionnelle en 3 ans est une formation professionnalisante entre théorie et pratique en intégrant la gestion de projet agile,  stages obligatoires et la possibilité d\'alternance. L\'obtention d\'une licence pro ouvre deux voies principales : une insertion professionnelle immédiate ou la poursuite d\'études vers un Master ou une école spécialisée.';
+            texte = `La licence professionnelle en 3 ans est une formation professionnalisante entre théorie et pratique en intégrant la gestion de projet agile,  stages obligatoires et la possibilité d\'alternance.<br>
+            L'obtention d'une licence pro ouvre deux voies principales : une insertion professionnelle immédiate ou la poursuite d'études vers un Master ou une école spécialisée.<br><br>
+            Découvrez la licence pro que nous proposons à l'IUT: <br>
+            
+            <img src="sources/rob.png" 
+            data-case="rob"
+            style="width:40px; height:40px; margin:05px;"></img>`;
             break;
         case 'iut':
             texte = `L\'Institut Universitaire de Technologie de Béziers est un établissement d\'enseignement supérieur public qui fait partie de l\'Université de Montpellier.<br><br>
@@ -223,28 +257,30 @@ function handleImageClick(imageId) {
             break;
         case 'mmi':
             texte = `Le BUT MMI (métiers du multimédia et de l'Internet) est un diplôme bac + 3 qui forme à la création de sites web, à la gestion de communautés sur les réseaux sociaux, à la production de contenus multimédias (jeux vidéo, applications, etc.) et au développement de services en ligne.
-            Il propose trois parcours dès la 2e année : création numérique, stratégie de communication numérique et design d'expérience, et développement web et dispositifs interactifs.<br>   
-            Le parcours création numérique apprend à créer des contenus sur différents supports grâce au graphisme et à l'écriture multimédia. Il prépare aux métiers de designer, infographiste, game designer ou technicien audiovisuel.<br>
-            Le parcours stratégie de communication numérique et design d'expérience n'est pas proposé à Béziers, mais fait partie des parcours possibles dans le BUT MMI.<br>
-            Le parcours développement web et dispositifs interactifs, lui, forme à la programmation, au développement d'interfaces et à la création d'expériences interactives.<br><br>
+            Dès la 2e année la formation s'organise autour de deux parcours :<br>
+            - création numérique <br>
+            - développement web et dispositifs interactifs <br><br>
             
             <img src="sources/info.png" 
             data-url="https://iut-beziers.edu.umontpellier.fr/files/2025/10/MMI2024.pdf" 
             style="width:40px; height:40px; margin:05px;"></img>`;
             break;
         case 'rt':
-            texte = `Le BUT R&T (Réseaux et Télécommunications) est un diplôme bac + 3 qui forme des spécialistes des technologies de l'information et de la communication. Les étudiants apprennent à installer, configurer, sécuriser et maintenir des réseaux et systèmes informatiques, tout en développant des outils et applications pour les réseaux et télécommunications. La formation met aussi l'accent sur le travail en équipe, l'éthique et la compréhension des enjeux technologiques modernes.<br>
-            Dès la 2e année, le BUT R&T propose quatre parcours : cybersécurité, qui prépare à protéger les systèmes et les données contre les attaques et les intrusions ; développement système et cloud, qui forme à la création et à la gestion d'infrastructures informatiques et de services cloud ; Internet des objets et mobilité, qui permet de concevoir et gérer des objets connectés et des solutions mobiles ; et pilotage de projets / réseaux opérateurs et multimédia (ROM), qui apprend à gérer les infrastructures et services des réseaux opérateurs, les communications unifiées et les services multimédias.<br>
-            Les diplômés travaillent dans des opérateurs télécom, des intégrateurs de solutions de communication pour les entreprises, ou dans les services informatiques internes d'entreprises, où ils peuvent concevoir, installer et administrer des infrastructures et services de réseaux, déployer des solutions de télécommunications et coordonner des projets informatiques.<br><br>
+            texte = `Le BUT R&T forme des spécialistes capables d'installer, sécuriser et maintenir des réseaux informatiques.<br>
+            Dès la 2ᵉ année, la formation s'organise autour de deux parcours :<br>
+            - la cybersécurité, qui vise à protéger les systèmes et les données contre les attaques <br>
+            - le développement système et cloud, qui permet de maîtriser la création et la gestion d'infrastructures informatiques et de services cloud.<br><br>
             
             <img src="sources/info.png" 
             data-url="https://iut-beziers.edu.umontpellier.fr/files/2025/10/RT2024.pdf" 
             style="width:40px; height:40px; margin:05px;"></img>`;
             break;
         case 'tc':
-            texte = `Le BUT TC (Techniques de Commercialisation) est un diplôme bac + 3 qui forme des spécialistes du commerce, du marketing et de la relation client. Les étudiants acquièrent des compétences en vente, marketing, gestion de projets commerciaux et relation client, tout en développant leur capacité à travailler en équipe et à comprendre les enjeux économiques et commerciaux actuels.<br>
-            Dès la 2e année, le BUT TC propose plusieurs parcours : le parcours Marketing Digital, E-business et Entrepreneuriat permet de se former aux stratégies numériques, à la création et au développement de projets commerciaux innovants ; le parcours Business International, Achat et Vente prépare à travailler dans un contexte global et multiculturel, en gérant les échanges commerciaux et les relations internationales ; le parcours Marketing et Management du Point de Vente forme à la gestion opérationnelle des points de vente, à l'animation commerciale et à l'optimisation de l'expérience client.<br>
-            Les diplômés peuvent travailler dans des services commerciaux et marketing d'entreprises, des start-ups, des points de vente, ou dans des structures internationales, où ils participent à la vente de produits et services, au développement de stratégies marketing, et à la gestion de projets commerciaux et digitaux.<br><br>
+            texte = `Le BUT TC (Techniques de Commercialisation) est un diplôme bac +3 qui forme aux métiers du commerce, du marketing et de la relation client. Les étudiants apprennent à vendre, communiquer, analyser un marché et gérer des projets.<br>
+            Dès la 2ᵉ année, la formation s'organise autour de deux parcours :<br> 
+            - le marketing digital <br>
+            - l'international <br>
+            - la gestion de points de vente.<br><br>
             
             <img src="sources/info.png" 
             data-url="https://iut-beziers.edu.umontpellier.fr/files/2025/10/TC2024.pdf" 
