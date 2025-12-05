@@ -2,6 +2,7 @@
     <head>
 <title> SAE 303</title>
 <meta charset="UTF-8"/>
+<link rel="stylesheet" href="css/style.css">
 <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
@@ -14,17 +15,141 @@
     renderer="logarithmicDepthBuffer: true; colorManagement: true; highPerformance: true; physicallyCorrectLights: true; antialias: false; powerPreference: high-performance;"
     stats="false"
 >
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+<a-camera position="0 0 0" look-controls="enabled: false" 
+    cursor="rayOrigin: mouse; fuse: false" 
+    raycaster="objects: .clickable; far: 100">
+</a-camera>
+
+
 
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-image id="JPO" src="sources/JPOv3.png" 
+        <a-image id="hibou" src="sources/hibou.png" 
             visible="true"
-            position="0 0 0"
+            scale="0.27 0.27"
+            position="0.17 -0.27 0"
+            class="clickable"
+        />
+
+        <a-image id="planet" src="sources/planet.png" 
+            visible="true"
+            scale="0.7 0.7"
+            position="-0.18 2 0"
+            class="clickable"
+        />
+
+        <a-image id="etu" src="sources/etu.png" 
+            visible="true"
+            scale="0.5 0.8"
+            position="-2.06 0.64 0"
+            class="clickable"
+        />
+
+        <a-image id="3but" src="sources/3but.png" 
+            visible="true"
+            scale="1.6 1.1"
+            position="1.65 0.25 0"
+            class="clickable"
+        />
+
+        <a-image id="licence" src="sources/licence.png" 
+            visible="true"
+            scale="1 1"
+            position="0.1 -0.8 0"
+            class="clickable"
+        />
+
+         <a-image id="iut" src="sources/Iut béziers.png" 
+            visible="true"
+            scale="1 0.4"
+            position="3.2 1.95 0"
+            class="clickable"
+        />
+
+        <a-image id="commerce" src="sources/Commerce.png" 
+            visible="true"
+            scale="0.6 1.3"
+            position="-1.8 -17 0"
+            class="clickable"
+        />
+
+        <a-image id="industrie" src="sources/Industrie.png" 
+            visible="true"
+            scale="1 1.05"
+            position="2.15 0 0"
+            class="clickable"
+        />
+
+        <a-image id="com" src="sources/Communication.png" 
+            visible="true"
+            scale="1 1"
+            position="-1.06 -0.95 0"
+            class="clickable"
+        />
+
+        <a-image id="num" src="sources/numérique.png" 
+            visible="true"
+            scale="1 1"
+            position="2.17 0 0"
+            class="clickable"
+        />
+
+        <a-image id="alternant" src="sources/alternant.png" 
+            visible="true"
+            scale="2.1 2.1"
+            position="-5.58 0.1 0"
+            class="clickable"
+        />
+
+        <a-image id="stagiaire" src="sources/stagiaire.png" 
+            visible="true"
+            scale="1 1"
+            position="-1.1 0 0"
+            class="clickable"
+        />
+
+        <a-image id="rob" src="sources/rob.png" 
+            visible="true"
+            scale="0.7 0.4"
+            position="3.8 5.5 0"
+            class="clickable"
+        />
+
+        <a-image id="mmi" src="sources/mmi.png" 
+            visible="true"
+            scale="0.7 0.9"
+            position="0.11 -1.1 0"
+            class="clickable"
+        />
+
+        <a-image id="rt" src="sources/RT.png" 
+            visible="true"
+            scale="0.6 1"
+            position="0.12 -1.2 0"
+            class="clickable"
+        />
+
+        <a-image id="tc" src="sources/TC.png" 
+            visible="true"
+            scale="1 1"
+            position="0.11 -1.2 0"
+            class="clickable"
         />
         
       </a-entity>
 
 </a-scene>
+
+
+<!-- Zone de texte -->
+<div id="infoBox" class="info-box hidden">
+    <div class="info-content">
+        <p id="infoText"></p>
+        <button id="retourBtn" class="retour-btn">Retour</button>
+    </div>
+</div>
+
+
+<script src="js/script.js"></script>
 </body>
 
 </html>
