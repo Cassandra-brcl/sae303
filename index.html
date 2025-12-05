@@ -1,3 +1,4 @@
+
 <html>
     <head>
 <title> SAE 303</title>
@@ -5,6 +6,17 @@
 <link rel="stylesheet" href="css/style.css">
 <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+
+<style>
+    body { margin: 0; overflow: hidden; }
+    /* overlay guide */
+    #guide {
+      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.6); z-index: 9999;
+    }
+    #guide img { width: 70%; max-width: 900px; border: 2px solid white; border-radius: 10px; }
+  </style>
 
     </head>
 
@@ -148,8 +160,6 @@
     </div>
 </div>
 
-
 <script src="js/script.js"></script>
 </body>
-
-</html>
+    </html>
