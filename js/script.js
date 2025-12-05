@@ -111,6 +111,21 @@ function showInfoBox(text) {
     
     infoText.innerHTML = '<p>'+text+'</p>';
     infoBox.classList.remove('hidden');
+
+    // Ajouter les événements de clic aux images avec liens
+    setTimeout(() => {
+        const linkImages = infoText.querySelectorAll('img[data-url]');
+        linkImages.forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const url = this.getAttribute('data-url');
+                if (url) {
+                    window.open(url, '_blank');
+                }
+            });
+        });
+    }, 100);
 }
 
 function hideInfoBox() {
@@ -131,11 +146,26 @@ function handleImageClick(imageId) {
     
     switch(imageId) {
         case 'hibou':
-            texte = `Salut ! Moi c\'est Athéna, la mascotte de l\'iut, je suis là tout au long de l\'année pour t\'accompagner dans ta vie étudiante.<br>
-Tu me retrouveras généralement lors des évènements étudiants organisés par le BDE. Je te laisse me rejoindre sur insta et tiktok pour suivre toutes mes aventures !`;
+            texte = `Salut ! Moi c'est Athéna, la mascotte de l'iut, je suis là tout au long de l'année pour t'accompagner dans ta vie étudiante.<br>
+            Tu me retrouveras généralement lors des évènements étudiants organisés par le BDE. <br> <br>
+            Je te laisse me rejoindre sur insta et tiktok pour suivre toutes mes aventures !<br> <br>
+
+            <img src="sources/insta.png" 
+            data-url="https://www.instagram.com/aeiutbeziers?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+            style="width:40px; height:40px; margin:05px;"></img>
+
+            <img src="sources/tiktok.png" 
+            data-url="https://www.tiktok.com/@aeiutbeziers34?_r=1&_t=ZN-91yCmLAi91K" 
+            style="width:40px; height:40px; margin:05px;"></img>`;
             break;
         case 'planet':
-            texte = `Situé dans le Sud de la France, au cœur de l\'Occitanie, l\'iut vous permet de bénéficier d\'un cadre de vie agréable. Venz profiter d\'une vie étudiante dynamique entre plages, patrimoines et paysages. La ville de Béziers offre un cadre de vie convivial et abordable, faisant de cet IUT l\'endroit parfait pour allier études de qualité et quotidien ensoleillé. `;
+            texte = `Situé dans le Sud de la France, au cœur de l'Occitanie, l'iut vous permet de bénéficier d'un cadre de vie agréable.<br>
+            Venez profiter d'une vie étudiante dynamique entre plages, patrimoines et paysages.<br>
+            La ville de Béziers offre un cadre de vie convivial et abordable, faisant de cet IUT l'endroit parfait pour allier études de qualité et quotidien ensoleillé.<br><br>
+            
+            <img src="sources/office.png" 
+            data-url="https://www.beziers-mediterranee.com/" 
+            style="width:40px; height:40px; margin:05px;"></img>`;
             break;
         case 'etu':
             texte = 'Nos étudiants sont au cœur de notre projet pédagogique.';
@@ -147,7 +177,11 @@ Tu me retrouveras généralement lors des évènements étudiants organisés par
             texte = 'La licence professionnelle en 3 ans est une formation professionnalisante entre théorie et pratique en intégrant la gestion de projet agile,  stages obligatoires et la possibilité d\'alternance. L\'obtention d\'une licence pro ouvre deux voies principales : une insertion professionnelle immédiate ou la poursuite d\'études vers un Master ou une école spécialisée.';
             break;
         case 'iut':
-            texte = 'L\'Institut Universitaire de Technologie de Béziers est un établissement d\'enseignement supérieur public qui fait partie de l\'Université de Montpellier.';
+            texte = `L\'Institut Universitaire de Technologie de Béziers est un établissement d\'enseignement supérieur public qui fait partie de l\'Université de Montpellier.<br><br>
+            
+            <img src="sources/info.png" 
+            data-url="https://iut-beziers.edu.umontpellier.fr/" 
+            style="width:40px; height:40px; margin:05px;"></img>`;
             break;
         case 'commerce':
             texte = `La formation BUT Techniques de Commercialisation (TC) de l'IUT de Béziers ouvre des débouchés essentiels et évolutifs dans le secteur du commerce omnicanal et du marketing digital.<br>
@@ -160,29 +194,63 @@ Tu me retrouveras généralement lors des évènements étudiants organisés par
             Il ne s'agit plus seulement de fabriquer, mais d'optimiser, d'automatiser et de rendre les usines intelligentes grâce à l'interconnexion des machines et à l'analyse des données.`;
             break;
         case 'com':
-            texte = 'Le secteur de la communication est accessible grâce à nos BUT MMI et TC qui forment les étudiants à développer des stratégies de communications, au marketing et à produire des contenus visuels et web.';
+            texte = `Le secteur de la Communication est un secteur large qui offres de nombreuses opportunités.<br><br>
+            Les diplômés du BUT Métiers du Multimédia et de l'Internet (MMI) sont formés à concevoir et développer des solutions numériques. Ils deviennent des professionnels polyvalents dans l'audiovisuel, l'infographie, le web design et la gestion de projet digital.<br> <br>
+            Les diplômés du BUT Techniques de Commercialisation (TC) sont formés au marketing, leur permettant de gérer une stratégie de marque et les campagnes de communication en ligne et hors ligne.`;
             break;
         case 'num':
-            texte = 'Le secteur numérique est accessible grâce à nos BUT RT et MMI qui forment nos étudiants à la création et gestion de contenu web, au développement de système et cloud et à la cybersécurité.';
+            texte = `Le secteur du Numérique est le moteur de l'économie moderne, couvrant l'infrastructure réseau et le développement de contenu et de services. Il est caractérisé par une demande constante en connectivité sécurisée et en expériences utilisateur (UX) innovantes.<br><br>
+            Les diplômés du BUT Réseaux et Télécommunications (RT) sont formés à devenir des experts chargés de concevoir, déployer et sécuriser les réseaux (fixes, mobiles, cloud, IoT), garantissant la fiabilité de l'information et des communications <br> <br>
+            Les diplômés du BUT Métiers du Multimédia et de l'Internet (MMI) sont formés à être les créatifs et les développeurs qui conçoivent les interfaces, les sites web, les applications mobiles et le contenu audiovisuel, transformant l'infrastructure réseau en services visibles pour les utilisateurs.`;
             break;
         case 'alternant':
-            texte = 'L\'alternance permet de combiner formation théorique et expérience professionnelle.';
+            texte =`Le parcours en alternance permet à l'étudiant de partager son temps entre l'IUT et une entreprise, en suivant un rythme qui alterne périodes de cours et périodes de travail.<br>
+            Ce mode de formation offre une immersion professionnelle continue, permet d'acquérir de l'expérience profesinnelle tout au long de l'année et donne souvent accès à une insertion plus rapide dans le monde du travail.<br> <br>
+            À Béziers, 2 étudiants sur 10 choisissent l'alternance, privilégiant ainsi une formation directement ancrée dans la réalité professionnelle et une expérience significative dès leur deuxième année d'étude.`;
             break;
         case 'stagiaire':
-            texte = 'Les stages sont une partie intégrante de votre formation.';
+            texte = `Le parcours initial avec stage est une modalité de formation dans laquelle l'étudiant suit ses cours à temps plein à l'IUT tout au long de l'année, puis réalise un stage en entreprise pour mettre en pratique les compétences acquises.<br>
+            Ce stage, généralement effectué à la fin de l'année, permet de découvrir le monde professionnel et de développer une première expérience concrète.<br><br>
+            À Béziers, 8 étudiants sur 10 choisissent le parcours initial, ce qui en fait la voie la plus répandue et la plus adaptée à ceux qui souhaitent suivre une formation complète à l'IUT avant de réaliser leurs stages.`;
             break;
         case 'rob':
-            texte = 'La robotique représente l\'avenir de l\'industrie et de la technologie.';
+            texte = `La Licence Professionnelle Rob&AI forme des techniciens, ingénieurs et cadres spécialisés en robotique, intelligence artificielle et cybersécurité, avec un accent sur les environnements industriels modernes, notamment l'industrie 4.0 et 5.0. La formation permet aux étudiants d'acquérir les compétences nécessaires pour concevoir et déployer des solutions de robotique et d'automatisation, gérer et maintenir des systèmes industriels connectés via l'IoT et l'IA, et sécuriser ces systèmes tant sur le plan opérationnel (OT) que numérique (IT). <br>
+            Les diplômés peuvent intervenir dans des entreprises industrielles pour mettre en œuvre des systèmes automatisés intelligents, assurer leur maintenance et leur sécurité, et développer des solutions innovantes adaptées aux besoins de l'industrie moderne.<br><br>
+            
+            <img src="sources/info.png" 
+            data-url="https://iut-beziers.edu.umontpellier.fr/files/2025/10/ROBIA2024.pdf" 
+            style="width:40px; height:40px; margin:05px;"></img>`;
             break;
         case 'mmi':
-            texte = 'Le BUT MMI (Métiers du Multimédia et de l\'Internet) forme aux métiers du web et du digital.';
+            texte = `Le BUT MMI (métiers du multimédia et de l'Internet) est un diplôme bac + 3 qui forme à la création de sites web, à la gestion de communautés sur les réseaux sociaux, à la production de contenus multimédias (jeux vidéo, applications, etc.) et au développement de services en ligne.
+            Il propose trois parcours dès la 2e année : création numérique, stratégie de communication numérique et design d'expérience, et développement web et dispositifs interactifs.<br>   
+            Le parcours création numérique apprend à créer des contenus sur différents supports grâce au graphisme et à l'écriture multimédia. Il prépare aux métiers de designer, infographiste, game designer ou technicien audiovisuel.<br>
+            Le parcours stratégie de communication numérique et design d'expérience n'est pas proposé à Béziers, mais fait partie des parcours possibles dans le BUT MMI.<br>
+            Le parcours développement web et dispositifs interactifs, lui, forme à la programmation, au développement d'interfaces et à la création d'expériences interactives.<br><br>
+            
+            <img src="sources/info.png" 
+            data-url="https://iut-beziers.edu.umontpellier.fr/files/2025/10/MMI2024.pdf" 
+            style="width:40px; height:40px; margin:05px;"></img>`;
             break;
         case 'rt':
-            texte = 'Le BUT Réseaux & Télécommunications forme aux infrastructures réseau.';
+            texte = `Le BUT R&T (Réseaux et Télécommunications) est un diplôme bac + 3 qui forme des spécialistes des technologies de l'information et de la communication. Les étudiants apprennent à installer, configurer, sécuriser et maintenir des réseaux et systèmes informatiques, tout en développant des outils et applications pour les réseaux et télécommunications. La formation met aussi l'accent sur le travail en équipe, l'éthique et la compréhension des enjeux technologiques modernes.<br>
+            Dès la 2e année, le BUT R&T propose quatre parcours : cybersécurité, qui prépare à protéger les systèmes et les données contre les attaques et les intrusions ; développement système et cloud, qui forme à la création et à la gestion d'infrastructures informatiques et de services cloud ; Internet des objets et mobilité, qui permet de concevoir et gérer des objets connectés et des solutions mobiles ; et pilotage de projets / réseaux opérateurs et multimédia (ROM), qui apprend à gérer les infrastructures et services des réseaux opérateurs, les communications unifiées et les services multimédias.<br>
+            Les diplômés travaillent dans des opérateurs télécom, des intégrateurs de solutions de communication pour les entreprises, ou dans les services informatiques internes d'entreprises, où ils peuvent concevoir, installer et administrer des infrastructures et services de réseaux, déployer des solutions de télécommunications et coordonner des projets informatiques.<br><br>
+            
+            <img src="sources/info.png" 
+            data-url="https://iut-beziers.edu.umontpellier.fr/files/2025/10/RT2024.pdf" 
+            style="width:40px; height:40px; margin:05px;"></img>`;
             break;
         case 'tc':
-            texte = 'Le BUT Techniques de Commercialisation forme aux métiers du commerce et du marketing.';
+            texte = `Le BUT TC (Techniques de Commercialisation) est un diplôme bac + 3 qui forme des spécialistes du commerce, du marketing et de la relation client. Les étudiants acquièrent des compétences en vente, marketing, gestion de projets commerciaux et relation client, tout en développant leur capacité à travailler en équipe et à comprendre les enjeux économiques et commerciaux actuels.<br>
+            Dès la 2e année, le BUT TC propose plusieurs parcours : le parcours Marketing Digital, E-business et Entrepreneuriat permet de se former aux stratégies numériques, à la création et au développement de projets commerciaux innovants ; le parcours Business International, Achat et Vente prépare à travailler dans un contexte global et multiculturel, en gérant les échanges commerciaux et les relations internationales ; le parcours Marketing et Management du Point de Vente forme à la gestion opérationnelle des points de vente, à l'animation commerciale et à l'optimisation de l'expérience client.<br>
+            Les diplômés peuvent travailler dans des services commerciaux et marketing d'entreprises, des start-ups, des points de vente, ou dans des structures internationales, où ils participent à la vente de produits et services, au développement de stratégies marketing, et à la gestion de projets commerciaux et digitaux.<br><br>
+            
+            <img src="sources/info.png" 
+            data-url="https://iut-beziers.edu.umontpellier.fr/files/2025/10/TC2024.pdf" 
+            style="width:40px; height:40px; margin:05px;"></img>`;
             break;
+message
         default:
             texte = 'Information sur : ' + imageId;
     }

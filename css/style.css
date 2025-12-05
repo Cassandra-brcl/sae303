@@ -59,7 +59,7 @@
 /* Responsive */
 @media (max-width: 768px) {
     .info-box {
-        width: 90%;
+        width: 70%;
         padding: 20px;
     }
     
