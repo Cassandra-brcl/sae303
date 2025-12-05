@@ -109,7 +109,7 @@ function showInfoBox(text) {
         image.setAttribute('visible', 'false');
     });
     
-    infoText.textContent = text;
+    infoText.innerHTML = '<p>'+text+'</p>';
     infoBox.classList.remove('hidden');
 }
 
@@ -131,10 +131,11 @@ function handleImageClick(imageId) {
     
     switch(imageId) {
         case 'hibou':
-            texte = 'Salut ! Moi c\'est Athéna, la mascotte de l\'iut, je suis là tout au long de l\'année pour t\'accompagner dans ta vie étudiante. Tu me retrouveras généralement lors des évènements étudiants organisés par le BDE. Je te laisse me rejoindre sur insta et tiktok pour suivre toutes mes aventures ! ';
+            texte = `Salut ! Moi c\'est Athéna, la mascotte de l\'iut, je suis là tout au long de l\'année pour t\'accompagner dans ta vie étudiante.<br>
+Tu me retrouveras généralement lors des évènements étudiants organisés par le BDE. Je te laisse me rejoindre sur insta et tiktok pour suivre toutes mes aventures !`;
             break;
         case 'planet':
-            texte = 'Situé dans le Sud de la France, au cœur de l\'Occitanie, l\'iut vous permet de bénéficier d\'un cadre de vie agréable. Venz profiter d\'une vie étudiante dynamique entre plages, patrimoines et paysages. La ville de Béziers offre un cadre de vie convivial et abordable, faisant de cet IUT l\'endroit parfait pour allier études de qualité et quotidien ensoleillé. ';
+            texte = `Situé dans le Sud de la France, au cœur de l\'Occitanie, l\'iut vous permet de bénéficier d\'un cadre de vie agréable. Venz profiter d\'une vie étudiante dynamique entre plages, patrimoines et paysages. La ville de Béziers offre un cadre de vie convivial et abordable, faisant de cet IUT l\'endroit parfait pour allier études de qualité et quotidien ensoleillé. `;
             break;
         case 'etu':
             texte = 'Nos étudiants sont au cœur de notre projet pédagogique.';
@@ -149,10 +150,14 @@ function handleImageClick(imageId) {
             texte = 'L\'Institut Universitaire de Technologie de Béziers est un établissement d\'enseignement supérieur public qui fait partie de l\'Université de Montpellier.';
             break;
         case 'commerce':
-            texte = 'Le secteur du commerce est accessible grâce à notre BUT TC qui forme aux métiers de la vente et du marketing.';
+            texte = `La formation BUT Techniques de Commercialisation (TC) de l'IUT de Béziers ouvre des débouchés essentiels et évolutifs dans le secteur du commerce omnicanal et du marketing digital.<br>
+            Les diplômés sont formés pour devenir des professionnels polyvalents, capables de maîtriser l'ensemble de la chaîne de valeur, de la prospection à la fidélisation client.<br>
+            Il ne s'agit plus seulement de vendre, mais de créer de la valeur en développant des stratégies commerciales et marketing adaptées à l'ère numérique, en ligne et en point de vente physique, grâce à l'analyse des données clients.`; 
             break;
         case 'industrie':
-            texte = 'Le secteur de l\'industrie est accessible grâce à notre Licence Pro Rob&IA qui prépare aux métiers de l\'industrie 4.0 et 5.0: mécatronique et robotique.';
+            texte = `la Licence Professionnelle Robotique & Intelligence Artificielle (ROB&IA) de l'IUT de Béziers ouvre des débouchés cruciaux et très demandés dans le domaine de l\'industrie 4.0 et 5.0.<br>
+            Les diplômés sont formés pour devenir des techniciens supérieurs polyvalents capables de combler le fossé entre les systèmes de production (OT) et les systèmes informatiques (IT).<br>
+            Il ne s'agit plus seulement de fabriquer, mais d'optimiser, d'automatiser et de rendre les usines intelligentes grâce à l'interconnexion des machines et à l'analyse des données.`;
             break;
         case 'com':
             texte = 'Le secteur de la communication est accessible grâce à nos BUT MMI et TC qui forment les étudiants à développer des stratégies de communications, au marketing et à produire des contenus visuels et web.';
